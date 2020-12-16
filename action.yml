@@ -1,0 +1,22 @@
+name: coveragepy Check Run reporter
+description: |
+  Annotates the source code on GitHub with the info about uncovered lines.
+author: KOLANICH
+inputs: 
+  github_token:
+    description: "The GITHUB_TOKEN secret"
+  database_path:
+    description: "Path to coverage database"
+    default: "./.coverage"
+  package_name:
+    description: "Name of the package for indication purposes"
+    default: ""
+  package_root:
+    description: "Path to subtract from the path in the coverage database to get the correct paths relative to repo root"
+    default: "."
+runs:
+  using: "node12" # GitHub disallows to use anything other there
+  main: "startBash.js" # ECMA modules are not yet supported by GH Actions
+branding:
+  icon: check-square
+  color: green
